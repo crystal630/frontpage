@@ -1,0 +1,26 @@
+:root {
+	--primary-color: #cc0000;
+	--secondary-color: #7c0000;
+}
+
+html,
+body {
+	/* https://css-tricks.com/couple-takes-sticky-footer/ */
+	height: 100%;
+  background: var(--primary-color);
+}
+
+.container{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#start{
+  width: 217px;
+}
+
+#in{
+  width: 217px;
+}
