@@ -218,6 +218,11 @@ body {
 	width: 300px;
 }
 
+#likeN{
+	font-size: 14px;
+	margin-left:3px;
+}
+
 #splash.fade {
 	opacity: 0;
 }
