@@ -1,7 +1,27 @@
 let base_url = 'https://organized-alluring-nerine.glitch.me';
 let newId = 1;
+let status = false;
+console.log(status);
 
-//get time
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 
 document.getElementById('comS').addEventListener('click', getData);
@@ -367,8 +387,16 @@ console.log(posts.length);
     var num = document.getElementById("list").childNodes.length-1;
     m.setAttribute("id",posts.length-num);
 
+      container.insertBefore(m, container.firstChild);
+      document.getElementById("reverse").addEventListener("click",function(){
+        container.appendChild(m);
+      });
+      document.getElementById("order").addEventListener("click",function(){
+        container.insertBefore(m, container.firstChild);
+      });
 
-    container.insertBefore(m, container.firstChild);
+    // }
+
 
 
 
@@ -410,6 +438,9 @@ console.log(posts.length);
 
     replyD.addEventListener("click", async function(){
 
+      //  let status=true;
+      // console.log(status);
+
       let like = {
         id: lId,
         username: "skip"
@@ -426,18 +457,20 @@ console.log(posts.length);
 
       let returned_post = await response.json();
      console.log('POST /post returned', returned_post);
-      for(i=0;i<post.replies.length;i++){
-        let tst = Object.values(returned_post.replies[i]);
-          let another = tst[0];
-          console.log(another);
-          let ppp = document.createElement("p");
-          replyD.appendChild(ppp);
-          ppp.innerHTML = another;
-      }
+
+       for(i=0;i<post.replies.length;i++){
+         let tst = Object.values(returned_post.replies[i]);
+           let another = tst[0];
+           console.log(another);
+           let ppp = document.createElement("p");
+           replyD.appendChild(ppp);
+           ppp.innerHTML = another;
+       }
 
 
 
-    });
+
+    },{once : true});
 
     let time = document.createElement('p');
     time.className = "time";
