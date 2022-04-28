@@ -124,42 +124,47 @@ console.log(posts.length);
     nm.innerHTML = post.username;
     n.appendChild(nm);
 
-    let replyD = document.createElement('div');
-    replyD.className = "replyD";
+
+        let replyD = document.createElement('div');
+        replyD.className = "replyD";
 
 
 
-    replyD.addEventListener("click", async function(){
+        replyD.addEventListener("click", async function(){
 
-      let like = {
-        id: lId,
-        username: "skip"
-      };
+          //  let status=true;
+          // console.log(status);
 
-      let response = await fetch(base_url + '/like', {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-       body: JSON.stringify(like)
-      });
+          let like = {
+            id: lId,
+            username: "skip"
+          };
 
-      let returned_post = await response.json();
-     console.log('POST /post returned', returned_post);
-      for(i=0;i<post.replies.length;i++){
-        let tst = Object.values(returned_post.replies[i]);
-          let another = tst[0];
-          console.log(another);
-          let ppp = document.createElement("p");
-          replyD.appendChild(ppp);
-          ppp.innerHTML = another;
-      }
+          let response = await fetch(base_url + '/like', {
+            method: 'POST',
+            cache: 'no-cache',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+           body: JSON.stringify(like)
+          });
+
+          let returned_post = await response.json();
+         console.log('POST /post returned', returned_post);
+
+           for(i=0;i<returned_post.replies.length;i++){
+             let tst = Object.values(returned_post.replies[i]);
+               let another = tst[0];
+               console.log(another);
+               let ppp = document.createElement("p");
+               replyD.appendChild(ppp);
+               ppp.innerHTML = another;
+           }
 
 
 
-    });
 
+        },{once : true});
     let time = document.createElement('p');
     time.className = "time";
 
@@ -374,6 +379,7 @@ console.log(posts.length);
 
 
 
+
     replyD.addEventListener("click", async function(){
 
       //  let status=true;
@@ -396,7 +402,8 @@ console.log(posts.length);
       let returned_post = await response.json();
      console.log('POST /post returned', returned_post);
 
-       for(i=0;i<post.replies.length;i++){
+       for(i=0;i<returned_post.replies.length;i++){
+         console.log("test")
          let tst = Object.values(returned_post.replies[i]);
            let another = tst[0];
            console.log(another);
@@ -437,8 +444,15 @@ console.log(posts.length);
     let iR = document.createElement('i');
     iR.className = "fa fa-regular fa-message";
     iL.addEventListener('click', async function(){
+
+
+
       iL.className = "fa fa-thumbs-up";
 
+      // let post = {
+      //   id: lId
+      // }
+      //
       let like = {
         id: lId,
         username: "noname"
@@ -448,7 +462,6 @@ console.log(posts.length);
         like.username = "noname";
       }else{
         like.username = useIt;
-
       }
 
       let response = await fetch(base_url + '/like', {
@@ -465,7 +478,7 @@ console.log(posts.length);
 
       });
     iR.addEventListener('click', function(){
-
+        console.log(post.replies.length);
 
 
         let rC = document.createElement('input');
