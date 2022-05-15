@@ -32,6 +32,8 @@ async function getData(){
 
   let storageD = document.getElementById('userName').value;
 
+
+    //The frame is provided by Prof Haider
     // Set Item
   localStorage.setItem("lastname", storageD);
   let post = {
@@ -55,7 +57,7 @@ async function getData(){
 //SUBMIT A NEW COMMENT
 document.getElementById('comS').addEventListener('click', async function(){
 
-
+  //The frame is provided by Prof Haider
   let post = {
     username: document.getElementById('userName').value,
     text: document.getElementById('search').value
@@ -232,6 +234,8 @@ console.log(posts.length);
       m.appendChild(rS);
 
         rS.addEventListener('click', async function(){
+
+          //The frame is provided by Prof Haider
           console.log("test");
           let post = {
             username: document.getElementsByClassName('name').value,
@@ -295,6 +299,7 @@ async function list() {
 
   console.log(useIt)
 
+    //The frame is provided by Prof Haider
   let post = {
     username: document.getElementById('userName').value,
     text: document.getElementById('search').value
@@ -382,9 +387,7 @@ console.log(posts.length);
 
     replyD.addEventListener("click", async function(){
 
-      //  let status=true;
-      // console.log(status);
-
+        //The frame is provided by Prof Haider
       let like = {
         id: lId,
         username: "skip"
@@ -449,10 +452,7 @@ console.log(posts.length);
 
       iL.className = "fa fa-thumbs-up";
 
-      // let post = {
-      //   id: lId
-      // }
-      //
+      //The frame is provided by Prof Haider
       let like = {
         id: lId,
         username: "noname"
@@ -511,14 +511,7 @@ console.log(posts.length);
             let returned_post = await response.json();
             console.log('POST /post returned', returned_post);
             console.log('post');
-            // for(i=0;i<post.replies.length;i++){
-            //   let tst = Object.values(returned_post.replies[i]);
-            //     let another = tst[0];
-            //     console.log(another);
-            //     let ppp = document.createElement("p");
-            //     replyD.appendChild(ppp);
-            //     ppp.innerHTML = another;
-            // }
+
 
 
 
